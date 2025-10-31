@@ -37,7 +37,7 @@ It uses precomputed similarity scores (via Machine Learning / collaborative filt
 2. Create a virtual environment and activate it:
    ```bash
    python -m venv venv
-   venv\Scripts\activate   # For Windows
+   venv\Scripts\activate
 ````
 
 3. Install dependencies:
@@ -48,9 +48,4 @@ It uses precomputed similarity scores (via Machine Learning / collaborative filt
 4. Run the Flask app:
    ```bash
    python app.py
-````
-
-5. Open your browser and visit:
-   ```
-   http://127.0.0.1:5000/
 ````
