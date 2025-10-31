@@ -20,7 +20,7 @@ It uses precomputed similarity scores (via Machine Learning / collaborative filt
 - **Data Handling:** Pandas, NumPy
 - **Deployment:** Render
 
-## ⚙️ How It Works
+## How It Works
 
 1. User enters a book name (e.g. *The Notebook*).  
 2. The app finds similar books using a similarity matrix (`similarity_score.pkl`).  
@@ -39,22 +39,22 @@ It uses precomputed similarity scores (via Machine Learning / collaborative filt
    ```bash
    python -m venv venv
    venv\Scripts\activate   # For Windows
-   ```
+````
 
 3. Install dependencies:
 
    ```bash
    pip install -r requirements.txt
-   ```
+````
 
 4. Run the Flask app:
 
    ```bash
    python app.py
-   ```
+````
 
 5. Open your browser and visit:
 
    ```
    http://127.0.0.1:5000/
-   ```
+````
