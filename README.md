@@ -32,20 +32,20 @@ It uses precomputed similarity scores (via Machine Learning / collaborative filt
    ```bash
    git clone https://github.com/chandnii96/Book-Recommender.git
    cd Book-Recommender
-````
+   ```
 
 2. Create a virtual environment and activate it:
    ```bash
    python -m venv venv
    venv\Scripts\activate
-````
+   ```
 
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
-````
+   ```
 
 4. Run the Flask app:
    ```bash
    python app.py
-````
+   ```
