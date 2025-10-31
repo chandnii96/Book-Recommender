@@ -65,9 +65,26 @@ def recommend_ui():
 
 @app.route('/recommend_books', methods=['POST'])
 def recommend():
-    user_input = request.form.get('user_input')
-    index = np.where(pt.index == user_input)[0][0]
-    similar_items = sorted(list(enumerate(similarity_score[index])), key=lambda x: x[1], reverse=True)[1:7]
+    user_input = request.form.get('user_input').strip().lower()
+
+    # Find all book titles that contain the user's input (case-insensitive)
+    matches = [title for title in pt.index if user_input in title.lower()]
+
+    if not matches:
+        return render_template(
+            'recommend.html',
+            error=f"No books found matching '{user_input}'. Please try another title."
+        )
+
+    # Use the first closest match
+    matched_title = matches[0]
+
+    index = np.where(pt.index == matched_title)[0][0]
+    similar_items = sorted(
+        list(enumerate(similarity_score[index])),
+        key=lambda x: x[1],
+        reverse=True
+    )[1:7]
 
     data = []
     for i in similar_items:
@@ -76,12 +93,10 @@ def recommend():
         item.extend(list(temp_df.drop_duplicates('Book-Title')['Book-Title'].values))
         item.extend(list(temp_df.drop_duplicates('Book-Title')['Book-Author'].values))
         item.extend(list(temp_df.drop_duplicates('Book-Title')['Image-URL-M'].values))
-
         data.append(item)
 
-    print(data)
+    return render_template('recommend.html', data=data, search_query=matched_title)
 
-    return render_template('recommend.html', data=data)
 
 if __name__ == '__main__':
     app.run(debug=True)
